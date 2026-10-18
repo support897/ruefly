@@ -1,6 +1,6 @@
 {
   "background_color": "#FFF4E8",
-  "description": "Ruefly: your socials up front — plan, schedule and track your posts in one calm room.",
+  "description": "Ruefly: your socials up front. Plan, schedule and track your posts in one calm room.",
   "display": "standalone",
   "icons": [
     {
@@ -46,7 +46,7 @@
       "purpose": "any maskable"
     }
   ],
-  "name": "Ruefly — Personal Brand Room",
+  "name": "Ruefly: Personal Brand Room",
   "scope": "./",
   "short_name": "Ruefly",
   "start_url": "./app/",
