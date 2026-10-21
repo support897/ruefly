@@ -49,6 +49,6 @@
   "name": "Ruefly: Personal Brand Room",
   "scope": "/",
   "short_name": "Ruefly",
-  "start_url": "/",
+  "start_url": "/app/",
   "theme_color": "#FFF4E8"
 }
