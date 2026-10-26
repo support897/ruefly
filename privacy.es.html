@@ -26,24 +26,25 @@
 <li>Tu nombre, el que das al registrarte (o el nombre de tu cuenta de Google o de Apple).</li>
 <li>Tu dirección de correo electrónico, usada para que inicies sesión y para restablecer tu contraseña.</li>
 <li>Tu ID de cuenta, un código que Firebase asigna a tu cuenta. Cada registro de la app se guarda bajo ese código.</li>
-<li>El contenido que introduces: tus planes, horarios, borradores y las publicaciones de las que haces seguimiento.</li>
+<li>El contenido que introduces: tus planes, horarios, borradores y las publicaciones de las que haces seguimiento. Si conectas Postiz, Ruefly también guarda tu clave API de Postiz y las asignaciones de canales en tu cuenta con sesión iniciada.</li>
 </ul>
 <h2>Qué no hace la app</h2>
 <ul>
 <li>Sin publicidad. Sin redes publicitarias.</li>
 <li>Sin SDK de análisis ni de rastreo. No se rastrea nada entre apps ni sitios web.</li>
-<li>Esta versión planifica, programa dentro de la app, recuerda y hace seguimiento. No publica en ninguna red social, y no guarda tus contraseñas de redes sociales.</li>
+<li>Ruefly planifica y guarda borradores en su propio calendario. Si eliges Publicar ahora o Programar en Postiz, Ruefly envía esa publicación a la cuenta y al canal de Postiz que conectaste. Ruefly no se conecta directamente a tus cuentas sociales ni publica sin que tú lo elijas.</li>
 <li>Tus datos nunca se venden. No se comparten con terceros, salvo los servicios nombrados en esta página que hacen funcionar la app.</li>
 </ul>
 <h2>Ayuda de IA para escribir</h2>
-<p>Cuando usas la ayuda de IA para escribir, tu instrucción y el texto de la publicación en la que estás trabajando se envían al proveedor de IA que tú eliges, con tu propia cuenta y tu propia clave. Tu clave se queda en tu dispositivo y Ruefly no la guarda. La clave se quita del dispositivo cuando cierras sesión o eliminas tu cuenta. Lo que vuelve se guarda solo como tus borradores. Nunca se publica.</p>
+<p>Cuando usas la ayuda de IA para escribir, tu instrucción y el texto de la publicación en la que estás trabajando se envían al proveedor de IA que tú eliges, con tu propia cuenta y tu propia clave. Tu clave se queda en tu dispositivo y Ruefly no la guarda. Lo que vuelve se guarda como borrador. Ruefly solo envía una publicación a tu propia cuenta de Postiz conectada si eliges Publicar ahora o Programar en Postiz.</p>
 <h2>Notificaciones</h2>
 <p>Los recordatorios se crean en tu propio dispositivo, tanto en la app del teléfono como en la versión web. No se envía nada a ningún servicio de notificaciones para crearlos.</p>
 <h2>Dónde se guardan</h2>
-<p>Tu cuenta y tu contenido se almacenan en Firebase (Google Cloud) en Sídney, Australia, y viajan por conexiones cifradas. Las reglas de la base de datos mantienen cada cuenta separada: solo tu cuenta con sesión iniciada puede leer tus datos.</p>
+<p>Tu cuenta, contenido, clave de Postiz y asignaciones de canales se guardan en Firebase (Google Cloud) en Sídney, Australia, y viajan por conexiones cifradas. Ruefly envía tu clave de Postiz a Firebase para guardarla bajo tu cuenta con sesión iniciada, y a la URL de Postiz que indicas para cargar integraciones o enviar publicaciones cuando tú lo eliges. Las reglas de la base de datos mantienen cada cuenta separada: solo tu cuenta con sesión iniciada puede leer tus datos.</p>
 <h2>Tus opciones</h2>
 <ul>
 <li>Elimina tu cuenta y todo su contenido dentro de la app: abre Cuenta y elige Eliminar mi cuenta. Ocurre al momento.</li>
+<li>Las publicaciones que Postiz ya aceptó o programó siguen en tu cuenta de Postiz; gestiónalas o elimínalas allí.</li>
 <li>También puedes pedirlo por correo: hello@ruefly.xyz. Las eliminaciones por correo se completan en un plazo de 30 días.</li>
 </ul>
 <h2>Menores</h2>
