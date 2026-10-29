@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ruefly: link in bio</title>
+<style>
+  body { background:#FFF4E8; color:#33161F; font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; margin:0; padding:40px 20px 64px; line-height:1.5; }
+  main { max-width:480px; margin:0 auto; text-align:center; }
+  .mark { width:64px; height:64px; margin:0 auto 10px; }
+  h1 { font-size:26px; margin:0 0 6px; color:#47222C; overflow-wrap:anywhere; }
+  .sub { color:#785E5A; font-size:14px; margin:0 0 26px; }
+  a.link { display:block; background:#FF6B57; color:#FFF9F2; text-decoration:none; font-weight:700; padding:14px 18px; border-radius:14px; margin:0 0 12px; overflow-wrap:anywhere; }
+  a.link:active { opacity:.85; }
+  .note { color:#785E5A; font-size:14px; margin-top:26px; }
+  .foot { color:#B99B8F; font-size:12px; margin-top:40px; }
+</style>
+</head>
+<body>
+<main>
+  <img class="mark" src="icons/mark.svg" alt="" />
+  <h1 id="bioName">…</h1>
+  <p class="sub" id="bioSub">Loading this page…</p>
+  <div id="bioLinks"></div>
+  <p class="note" id="bioNote"></p>
+  <p class="foot">Made with Ruefly</p>
+</main>
+<script>
+(function () {
+  var slug = new URLSearchParams(location.search).get("s") || "";
+  var nameEl = document.getElementById("bioName");
+  var subEl = document.getElementById("bioSub");
+  var linksEl = document.getElementById("bioLinks");
+  var noteEl = document.getElementById("bioNote");
+  function fail(msg) { nameEl.textContent = "Ruefly"; subEl.textContent = msg; }
+  if (!/^[a-z0-9]([a-z0-9-]{1,28}[a-z0-9])?$/.test(slug)) { fail("This page link looks wrong."); return; }
+  var url = "https://firestore.googleapis.com/v1/projects/ilse-socials/databases/(default)/documents/bios/" + encodeURIComponent(slug);
+  fetch(url).then(function (r) {
+    if (r.status === 404) { fail("This page is not here. It may have been taken down."); return null; }
+    if (!r.ok) { fail("This page could not load. Try again in a moment."); return null; }
+    return r.json();
+  }).then(function (doc) {
+    if (!doc || !doc.fields) return;
+    var f = doc.fields;
+    var name = (f.name && f.name.stringValue) || "Ruefly";
+    nameEl.textContent = name;
+    document.title = name + ": Ruefly";
+    subEl.textContent = "";
+    var links = (f.links && f.links.arrayValue && f.links.arrayValue.values) || [];
+    var shown = 0;
+    links.forEach(function (item) {
+      var m = (item && item.mapValue && item.mapValue.fields) || {};
+      var title = (m.title && m.title.stringValue) || "";
+      var href = (m.url && m.url.stringValue) || "";
+      if (!title || !/^https?:\/\//i.test(href)) return;
+      var a = document.createElement("a");
+      a.className = "link"; a.href = href; a.textContent = title;
+      a.rel = "noopener"; a.target = "_blank";
+      linksEl.appendChild(a);
+      shown++;
+    });
+    if (!shown) noteEl.textContent = "No links here yet.";
+  }).catch(function () { fail("This page could not load. Try again in a moment."); });
+})();
+</script>
+</body>
+</html>
